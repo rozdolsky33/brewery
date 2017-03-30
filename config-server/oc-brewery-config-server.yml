@@ -1,0 +1,56 @@
+apiVersion: v1
+kind: List
+items:
+- apiVersion: v1
+  kind: Service
+  metadata:
+    name: brewery-config-server
+    labels:
+      app: brewery-config-server
+  spec:
+    ports:
+    - port: 8888
+      targetPort: 8888
+    selector:
+      deploymentconfig: brewery-config-server
+- apiVersion: v1
+  kind: DeploymentConfig
+  metadata:
+    labels:
+      app: brewery-config-server
+    name: brewery-config-server
+  spec:
+    replicas: 1
+    selector:
+      deploymentconfig: brewery-config-server
+    template:
+      metadata:
+        labels:
+          deploymentconfig: brewery-config-server
+      spec:
+        containers:
+        - image: yanaga/brewery-config-server:latest
+          name: brewery-config-server
+          ports:
+          - containerPort: 8888
+            protocol: TCP
+          readinessProbe:
+            failureThreshold: 3
+            httpGet:
+              path: /health
+              port: 8888
+              scheme: HTTP
+            initialDelaySeconds: 20
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 1
+- apiVersion: v1
+  kind: Route
+  metadata:
+    name: brewery-config-server
+    labels:
+      app: brewery-config-server
+  spec:
+    to:
+      kind: Service
+      name: brewery-config-server

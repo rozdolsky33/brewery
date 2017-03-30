@@ -7,7 +7,7 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/spring-cloud-samples/brewery-config.git
+          uri: https://github.com/yanaga/brewery-config.git
 
 spring.zipkin.enabled: false
 
