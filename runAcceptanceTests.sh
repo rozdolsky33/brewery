@@ -262,8 +262,8 @@ You can use the following options:
 
 GLOBAL:
 -t  |--whattotest  - define what you want to test (i.e. ZOOKEEPER, SLEUTH, SLEUTH_STREAM, EUREKA, CONSUL, SCS)
--v  |--version - which version of BOM do you want to use? Defaults to Dalston snapshot
--sv |--scsversion - which version of BOM for Spring Cloud Services do you want to use? Defaults to 1.3.2.BUILD-SNAPSHOT
+-v  |--version - which version of BOM do you want to use? Defaults to Dalston.M1
+-sv |--scsversion - which version of BOM for Spring Cloud Services do you want to use? Defaults to Dalston.M1
 -h  |--healthhost - what is your health host? where is docker? defaults to localhost
 -l  |--numberoflines - how many lines of logs of your app do you want to print? Defaults to 1000
 -r  |--reset - do you want to reset the git repo of brewery? Defaults to "no"
@@ -304,7 +304,7 @@ else
 fi
 WAIT_TIME="${WAIT_TIME:-5}"
 RETRIES="${RETRIES:-70}"
-DEFAULT_VERSION="${DEFAULT_VERSION:-Dalston.BUILD-SNAPSHOT}"
+DEFAULT_VERSION="${DEFAULT_VERSION:-Dalston.M1}"
 DEFAULT_HEALTH_HOST="${DEFAULT_HEALTH_HOST:-127.0.0.1}"
 DEFAULT_NUMBER_OF_LINES_TO_LOG="${DEFAULT_NUMBER_OF_LINES_TO_LOG:-1000}"
 SHOULD_START_RABBIT="${SHOULD_START_RABBIT:-yes}"
@@ -315,7 +315,7 @@ fi
 LOCALHOST="127.0.0.1"
 MEM_ARGS="-Xmx128m -Xss1024k"
 CLOUD_PREFIX="brewery"
-DEFAULT_SCS_VERSION="1.3.2.BUILD-SNAPSHOT"
+DEFAULT_SCS_VERSION="Dalston.M1"
 SLEEP_TIME_FOR_EUREKA="${SLEEP_TIME_FOR_EUREKA:-45}"
 
 BOM_VERSION_PROP_NAME="BOM_VERSION"
